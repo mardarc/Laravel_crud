@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfessoresController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,4 +30,18 @@ Route::get('/home', [HomeController::class, 'index']);
 
 Route::group([ 'prefix' => '/usuarios'], function() {
     Route::get('/', [UserController::class, 'index'])->name('usuarios');
+    Route::get('/create', [UserController::class, 'create']);
+    Route::post('/store', [UserController::class, 'store']);
+    Route::get('/{id}/show', [UserController::class, 'show']);
+    Route::post('/{id}/update', [UserController::class, 'update']);
+    Route::get('/{id}/delete',  [UserController::class, 'destroy']);
+});
+
+Route::group([ 'prefix' => '/professores'], function() {
+    Route::get('/', [ProfessoresController::class, 'index'])->name('professores');
+    Route::get('/create', [ProfessoresController::class, 'create']);
+    Route::post('/store', [ProfessoresController::class, 'store']);
+    Route::get('/{id}/show', [ProfessoresController::class, 'show']);
+    Route::post('/{id}/update', [ProfessoresController::class, 'update']);
+    Route::get('/{id}/delete',  [ProfessoresController::class, 'destroy']);
 });

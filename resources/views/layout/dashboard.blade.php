@@ -12,10 +12,12 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="https://laravel.com/img/favicon/favicon.ico">
     <!-- Custom CSS -->
-    <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <link href="{{ url('plugins/bower_components/chartist/dist/chartist.min.css') }}" rel="stylesheet">
+    <link href="{{ url('plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css') }}" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="css/dashboard.min.css" rel="stylesheet">
+    <link href="{{ url('css/dashboard.min.css') }}" rel="stylesheet">
+
+    @yield('style')
 </head>
 
 <body>
@@ -74,7 +76,7 @@
                         <li class="sidebar-item pt-2">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url ('/usuarios')}}"
                                 aria-expanded="false">
-                                <i class="far fa-clock" aria-hidden="true"></i>
+                                <i class="fas fa-users" aria-hidden="true"></i>
                                 <span class="hide-menu">Usuaríos</span>
                             </a>
                         </li>
@@ -120,7 +122,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col">
-                        @include('layout.dashboard_breadcrumb', ['title' => ['name' => 'Usuários', 'path' => ['Usuários']]])
+                        @yield('breadcrumb')
                     </div>
                 </div>
             </div>
@@ -134,20 +136,20 @@
     <script src="{{ url('js/popper.min.js') }}" type="text/javascript"></script>
     <script src="{{ url('js/bootstrap.min.js') }}" type="text/javascript"></script>
 
-    <script src="js/app-style-switcher.js"></script>
-    <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <script src="{{ url('js/app-style-switcher.js') }}"></script>
+    <script src="{{ url('plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
     <!--Wave Effects -->
-    <script src="js/waves.js"></script>
+    <script src="{{ url('js/waves.js') }}"></script>
     <!--Menu sidebar -->
-    <script src="js/sidebarmenu.js"></script>
+    <script src="{{ url('js/sidebarmenu.js') }}"></script>
     <!--Custom JavaScript -->
-    <script src="js/custom.js"></script>
+    <script src="{{ url('js/custom.js') }}"></script>
     <!--This page JavaScript -->
     <!--chartis chart-->
-    <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
-    <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    <script src="js/pages/dashboards/dashboard1.js"></script>
-
+    <script src="{{ url('plugins/bower_components/chartist/dist/chartist.min.js') }}"></script>
+    <script src="{{ url('plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js') }}"></script>
+    <script src="{{ url('js/pages/dashboards/dashboard1.js') }}"></script>
+    <script type="application/javascript" src="{{ url('js/jquery.mask.min.js') }}"></script>
     @yield('javascript')
 </body>
 </html>

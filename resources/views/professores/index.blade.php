@@ -6,16 +6,14 @@
     table tbody tr:hover {
         cursor: pointer;
     }
-
 </style>
 @endsection
 
 @section('breadcrumb')
-    @include('layout.dashboard_breadcrumb', ['title' => ['name' => 'Usuários', 'path' => ['Usuários']]])
+    @include('layout.dashboard_breadcrumb', ['title' => ['name' => 'Professores', 'path' => ['Professores']]])
 @endsection
 
 @section('conteudo')
-    
     
     <div class="container-fluid">
         <div class="row">
@@ -23,18 +21,18 @@
                 <div class="white-box">
                     <div class="row mb-2">
                         <div class="col">
-                            <h4 class="box-title">Lista de Usuários</h4>
+                            <h4 class="box-title">Lista de Professores</h4>
                         </div>
                         <div class="col text-right">
-                            <a href="{{ url('/usuarios/create') }}" type="button" class="btn btn-primary">Novo Usuário</a>
+                            <a href="{{ url('/professores/create') }}" type="button" class="btn btn-primary">Novo Professor</a>
                         </div>
                     </div>
-                    <table class="table table-hover table-sm" id="dt-usuarios">
+                    <table class="table table-hover table-sm" id="dt-professores">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Nome</th>
-                                <th>Usuario</th>
+                                <th>E-mail</th>
                             </tr>
                         </thead>
                     </table>
@@ -58,15 +56,15 @@
     <script type="application/javascript" src="{{ url('js/datatables/buttons.colVis.min.js') }}"></script>
 
     <script type="text/javascript">
-        let url_base = "{{ url('/usuarios')}}";
+        let url_base = "{{ url('/professores')}}";
 
         $(document).ready(function() {
             jQuery.fn.dataTable.ext.errMode = 'none';
-            table = $('#dt-usuarios').DataTable({
+            table = $('#dt-professores').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route ('usuarios') }}",
+                    url: "{{ route ('professores') }}",
                     data: function (d) {
                         d.search = $('input[type="search"]').val()
                     }
@@ -76,12 +74,12 @@
                 columns: [
                     {data: 'id', name: 'id'},
                     {data: 'nome', name: 'nome'},
-                    {data: 'usuario', name: 'usuario'},
+                    {data: 'email', name: 'email'},
 
                 ],
                 order: [[0, 'desc']],
                 "initComplete": function(settings, json) {
-                    table.buttons().container().appendTo('#dt-usuarios_wrapper .col-md-4:eq(0)');
+                    table.buttons().container().appendTo('#dt-professores_wrapper .col-md-4:eq(0)');
 
                     $('#search').attr('placeholder', 'Pesquisar');
 
@@ -89,7 +87,7 @@
                         table.draw();
                     })
 
-                    $('#dt-usuarios tbody tr').on('click', function (){
+                    $('#dt-professores tbody tr').on('click', function (){
                         let id = $(this).data('id');
                         window.location.href = url_base + '/' + id + '/show'; 
                     })
