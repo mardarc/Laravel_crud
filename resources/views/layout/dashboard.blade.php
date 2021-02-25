@@ -101,6 +101,13 @@
                                 <span class="hide-menu">Disciplinas</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url ('/turmas')}}"
+                                aria-expanded="false">
+                                <i class="far fa-id-card" aria-hidden="true"></i>
+                                <span class="hide-menu">Turmas</span>
+                            </a>
+                        </li>
                     </ul>
 
                 </nav>
