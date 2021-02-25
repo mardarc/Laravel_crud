@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfessoresController;
+use App\Http\Controllers\AlunosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,4 +45,13 @@ Route::group([ 'prefix' => '/professores'], function() {
     Route::get('/{id}/show', [ProfessoresController::class, 'show']);
     Route::post('/{id}/update', [ProfessoresController::class, 'update']);
     Route::get('/{id}/delete',  [ProfessoresController::class, 'destroy']);
+});
+
+Route::group([ 'prefix' => '/alunos'], function() {
+    Route::get('/', [AlunosController::class, 'index'])->name('alunos');
+    Route::get('/create', [AlunosController::class, 'create']);
+    Route::post('/store', [AlunosController::class, 'store']);
+    Route::get('/{id}/show', [AlunosController::class, 'show']);
+    Route::post('/{id}/update', [AlunosController::class, 'update']);
+    Route::get('/{id}/delete',  [AlunosController::class, 'destroy']);
 });
