@@ -87,7 +87,7 @@
                         table.draw();
                     })
 
-                    $('#dt-disciplinas tbody tr').on('click', function (){
+                    $(document).on('click','#dt-disciplinas tbody tr', function (){
                         let id = $(this).data('id');
                         window.location.href = url_base + '/' + id + '/show'; 
                     })

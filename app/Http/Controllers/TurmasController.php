@@ -73,6 +73,7 @@ class TurmasController extends Controller
         if ($request->ajax()) {
             $turmas_alunos = TurmasAlunos::join('alunos', 'turmas_alunos.aluno_id', '=', 'alunos.id')
                                         ->join('turmas', 'turmas_alunos.turma_id', '=', 'turmas.id')
+                                        ->select('turmas_alunos.id as id', 'nome', 'email', 'status', 'aluno_id')
                                         ->where('turma_id', $id);
 
             return DataTables::of($turmas_alunos)
@@ -171,12 +172,31 @@ class TurmasController extends Controller
         catch (Exception $e) {
             return response()->json([
                 'error' => true,
-                'message' => $e->getMessage()
+                'message' => 'Não foi possível adicionar o aluno.'
+            ]);
+        }
+
+        return response()->json([
+            'error' => false,
+            'message' => 'Aluno cadastrado na turma.'
+        ]);
+    }
+
+    public function removeAlunos (Request $request) 
+    {
+        try {
+            $aluno = TurmasAlunos::where('id', $request->turma_aluno_id)->delete();
+        }
+        catch (Exception $e) {
+            return response()->json([
+                'error' => true,
+                'message' => 'Não foi possível remover o aluno da turma.'
             ]);
         }
 
         return response()->json([
             'error' => false
         ]);
+
     }
 }

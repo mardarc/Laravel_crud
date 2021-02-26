@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Ramsey\Uuid\Uuid;
 
@@ -25,8 +26,7 @@ class ProfessoresController extends Controller
                                 if (!empty($request->get('search'))) {
                                     $query->where('nome', 'LIKE', '%' . Str::lower($request->get('search') . '%'))
                                             ->orWhere('cpf', 'LIKE' , '%' . Str::lower($request->get('search') . '%'))
-                                            ->orWhere('email', 'LIKE' , '%' . Str::lower($request->get('search') . '%'))
-                                            ->orWhere('curso', 'LIKE' , '%' . Str::lower($request->get('search') . '%'));
+                                            ->orWhere('email', 'LIKE' , '%' . Str::lower($request->get('search') . '%'));
                                 }
             });
 

@@ -83,11 +83,11 @@
 
                     $('#search').attr('placeholder', 'Pesquisar');
 
-                    $('#search').on('click', function(){
+                    $('#search').on('change', function(){
                         table.draw();
                     })
 
-                    $('#dt-professores tbody tr').on('click', function (){
+                    $(document).on('click', '#dt-professores tbody tr', function (){
                         let id = $(this).data('id');
                         window.location.href = url_base + '/' + id + '/show'; 
                     })

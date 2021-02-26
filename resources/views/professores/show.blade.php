@@ -164,13 +164,14 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-danger">Atenção!</h5>
+                    <h4 class="modal-title text-danger">Atenção!</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Deseja confirmar a exclusão do usuário selecionado?</p>
+                    <p>Deseja confirmar a exclusão do professor selecionado?</p>
+                    <p>Caso exitam turmas vinculadas a este professor, a disciplina ficará sem professor vinculado.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

@@ -94,14 +94,13 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $password = Hash::make($request->password);
+        
 
         $imagem = $request->file('imagem');
         
         try {
 
             $usuario = User::find($id);
-            
             if($request->hasFile('imagem')) {
                 $extensao = $imagem->extension();
                 if ($extensao == "png" || $extensao == "jpg" || $extensao == "jpeg" ){
@@ -111,9 +110,15 @@ class UserController extends Controller
             
             $usuario->nome = $request->nome;
             $usuario->email = $request->email;
-            $usuario->password = $password;
-            $usuario->telefone = $request->telefone;
-
+            
+            if ($request->password != 'password') {
+                $password = Hash::make($request->password);
+                $usuario->password = $password;
+            }
+            if ($request->telefone != null) {
+                $usuario->telefone = $request->telefone;
+            }
+            
             $usuario->save();
         }
         catch(Exception $e) {
