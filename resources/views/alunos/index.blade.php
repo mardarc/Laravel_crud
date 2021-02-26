@@ -33,6 +33,8 @@
                                 <th>ID</th>
                                 <th>Nome</th>
                                 <th>E-mail</th>
+                                <th>Curso</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                     </table>
@@ -75,6 +77,25 @@
                     {data: 'id', name: 'id'},
                     {data: 'nome', name: 'nome'},
                     {data: 'email', name: 'email'},
+                    {data: 'curso', name: 'curso'},
+                    {data: 'status', name: 'status',
+                        "render": function(status) {
+                            switch (status) {
+                                case 1 : 
+                                    return '<span class="badge badge-success">Matriculado</span>';
+                                    break;
+                                case 2 : 
+                                    return '<span class="badge badge-warning">Pré-Matricula</span>';
+                                    break;
+                                case 3 : 
+                                    return '<span class="badge badge-danger">Desistente</span>';
+                                    break;
+                                case 4 : 
+                                    return '<span class="badge badge-secondary">Trancado</span>';
+                                    break;
+                            } 
+                        }
+                    },
 
                 ],
                 order: [[0, 'desc']],
@@ -87,7 +108,7 @@
                         table.draw();
                     })
 
-                    $('#dt-alunos tbody tr').on('click', function (){
+                    $(document).on('click', '#dt-alunos tbody tr', function (){
                         let id = $(this).data('id');
                         window.location.href = url_base + '/' + id + '/show'; 
                     })

@@ -30,13 +30,13 @@
                         <form method="POST" action="{{ url('/login') }}">
                             {{ csrf_field() }}
                             <div class="form-group">
-                                <label for="input_usuario">Usuário</label>
-                                <input type="text" class="form-control" id="input_usuario" aria-describedby="Usuario" name="input_usuario">
+                                <label for="usuario">Usuário</label>
+                                <input type="text" class="form-control" id="usuario" aria-describedby="Usuario" name="usuario">
                                 <small id="help_usuario" class="form-text text-muted">Utilize seu usuário de login.</small>
                             </div>
                             <div class="form-group">
-                                <label for="input_password">Senha</label>
-                                <input type="password" class="form-control" id="input_password" name="input_password">
+                                <label for="password">Senha</label>
+                                <input type="password" class="form-control" id="password" name="password">
                             </div>
                             <button type="submit" class="btn btn-dark w-100">Acessar</button>
                         </form>

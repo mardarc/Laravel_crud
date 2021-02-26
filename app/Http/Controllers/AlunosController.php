@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Ramsey\Uuid\Uuid;
 
 use App\Models\Alunos;
+use App\Models\TurmasAlunos;
 
 use File;
 use Exception;
@@ -129,6 +131,7 @@ class AlunosController extends Controller
     public function destroy($id)
     {
         try {
+            TurmasAlunos::where('aluno_id', $id)->delete();
             Alunos::where('id', $id)->delete();
         }
         catch (Exception $e) {

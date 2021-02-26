@@ -1,9 +1,11 @@
 @extends('layout.dashboard')
 
+@section('breadcrumb')
+    @include('layout.dashboard_breadcrumb', ['title' => ['name' => 'Home', 'path' => []]])
+@endsection
+
 @section('conteudo')
     
-    @include('layout.dashboard_breadcrumb', ['title' => ['name' => 'Home', 'path' => []]])
-
     <div class="jumbotron">
         <h1 class="display-4">Seja bem-vindo!</h1>
         <p class="lead">Este sistema foi desenvolvido para administração de professores, alunos e disciplinas.</p>

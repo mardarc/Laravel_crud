@@ -28,6 +28,7 @@ Route::get('/welcome', function() {
 });
 
 Route::post('/login', [LoginController::class, 'login']);
+Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/home', [HomeController::class, 'index']);
 
@@ -77,4 +78,5 @@ Route::group([ 'prefix' => '/turmas'], function() {
     Route::get('/{id}/alunos', [TurmasController::class, 'alunos']);
     Route::get('/searchAlunos', [TurmasController::class, 'searchAlunos'])->name('search_alunos');
     Route::get('/addAlunos', [TurmasController::class, 'addAlunos'])->name('add_alunos');
+    Route::get('/removeAlunos', [TurmasController::class, 'removeAlunos'])->name('remove_alunos');
 });

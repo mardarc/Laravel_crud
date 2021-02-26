@@ -85,11 +85,11 @@
 
                     $('#search').attr('placeholder', 'Pesquisar');
 
-                    $('#search').on('click', function(){
-                        table.draw();
+                    $('#search').on('change', function(){
+                        table.columns.adjust().draw();
                     })
 
-                    $('#dt-usuarios tbody tr').on('click', function (){
+                    $(document).on('click', '#dt-usuarios tbody tr', function (){
                         let id = $(this).data('id');
                         window.location.href = url_base + '/' + id + '/show'; 
                     })

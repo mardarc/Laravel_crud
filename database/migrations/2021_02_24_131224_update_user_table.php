@@ -18,7 +18,7 @@ class UpdateUserTable extends Migration
     {
         Schema::table($this->tableName, function($table) {
             $table->string('uuid')->after('password');
-            $table->string('telefone')->after('email');
+            $table->string('telefone')->after('email')->nullable();
         });
     }
 

@@ -69,7 +69,7 @@
                                 <h4>Lista de Alunos</h4>
                             </div>
                             <div class="col-6 text-right">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_add_aluno">Adicionar Aluno</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_add_aluno" onclick="$('#alert_add_aluno').hide();">Adicionar Aluno</button>
                             </div>
                         </div>
                         <div class="row">
@@ -81,6 +81,7 @@
                                             <th>Nome</th>
                                             <th>E-mail</th>
                                             <th>Status</th>
+                                            <th>Ação</th>
                                         </tr>
                                     </thead>
                                 </table>
@@ -114,7 +115,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Deseja confirmar a exclusão do usuário selecionado?</p>
+                    <p>Deseja confirmar a exclusão da turma selecionada?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -140,6 +141,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <div class="alert alert-info" role="alert" style="display: none" id="alert_add_aluno">
+                        
+                    </div>
                     <label>CPF ou ID</label>
                     <div class="row">
                         <div class="col-9">
@@ -213,7 +217,12 @@
                     {data: 'aluno_id', name: 'aluno_id'},
                     {data: 'nome', name: 'alunos.nome'},
                     {data: 'email', name: 'email'},
-                    {data: 'status', name: 'status'}
+                    {data: 'status', name: 'status'},
+                    {data: 'id', name: 'acao',
+                        "render": function(id){
+                            return '<button class="btn btn-sm btn-danger w-100 btn-remove-aluno" data-id=" ' + id + '"> Remover </button>'; 
+                        }
+                    }
                 ],
                 order: [[0, 'desc']],
                 "initComplete": function(settings, json) {
@@ -259,6 +268,7 @@
 
         $(document).on('click', '.btn-add-aluno', function(){
             let aluno_id = $(this).data('id');
+            $('#alert_add_aluno').slideUp();
 
             $.ajax({
                 url: "{{ route('add_alunos') }}",
@@ -269,15 +279,41 @@
                 }
             }).done(function(res){
                 if (res.error) {
+
+                    $('#alert_add_aluno').html(res.message);
+                    $('#alert_add_aluno').slideDown();
                     return
                 }
-
-                $('#add_aluno_tbody').html(html)
+                
+                $('#alert_add_aluno').html(res.message);
+                $('#alert_add_aluno').slideDown();
+                table.draw();
 
             }).fail(function(jqXHR, e) {
                     console.log(jqXHR, jqXHR.responseJSON, e);
             });
         });
+
+        $(document).on('click', '.btn-remove-aluno', function(){
+            let turma_aluno_id = $(this).data('id');
+            console.log(turma_aluno_id);
+            $.ajax({
+                url: "{{ route('remove_alunos') }}",
+                method: "GET",
+                data: {
+                    turma_aluno_id: turma_aluno_id
+                }
+            }).done(function(res){
+                if (res.error) {
+                    return
+                }
+
+                table.draw();
+
+            }).fail(function(jqXHR, e) {
+                    console.log(jqXHR, jqXHR.responseJSON, e);
+            });
+        })
         
     </script>
 

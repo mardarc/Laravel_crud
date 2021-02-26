@@ -158,13 +158,6 @@
         <!-- ============================================================== -->
         <!-- End PAge Content -->
         <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Right sidebar -->
-        <!-- ============================================================== -->
-        <!-- .right-sidebar -->
-        <!-- ============================================================== -->
-        <!-- End Right sidebar -->
-        <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
     <!-- End Container fluid  -->
@@ -183,7 +176,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Deseja confirmar a exclusão do usuário selecionado?</p>
+                    <p>Deseja confirmar a exclusão do aluno selecionado?</p>
+                    <p>Ele será removido das turmas em que está cadastrado.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
