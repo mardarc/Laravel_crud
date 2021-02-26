@@ -7,10 +7,6 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
-<p align="center"><img src="http://vhcode.com.br/assets/img/logo.png"></p>
-
-
 
 ## CRUD | LARAVEL
 
@@ -42,9 +38,20 @@ Selecione o arquivo .env e altere as informações de acordo com seu banco de da
     DB_DATABASE= || Nome do banco de dados ||
     DB_USERNAME= || Usuário do Banco de Dados ||
     DB_PASSWORD= || Senha do Usuário do Banco de Dados ||
+    
+Execute em seu terminal o seguinte comando para geração de chave:
 
+    "php artisan key:gengerate"
+    
+Para instalação dos componentes do laravel execute o comando em seu terminal:
+
+    "composer install"
+    
 No terminal entre na pasta da sua aplicação execute o comando:
 
     "php artisan migrate"
 
 A partir de então o sistema estará pronto para ser utilizado.
+Para efetuar login utilize as seguintes credenciais:
+    Usuário: admin
+    Senha: 123456
